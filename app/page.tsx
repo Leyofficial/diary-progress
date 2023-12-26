@@ -1,47 +1,14 @@
-import {IDuties} from "@/types/duties/type";
+
 import {MdDelete} from "react-icons/md";
 import { DayState} from "@/components/Days";
+import {kv} from "@vercel/kv";
 
-export default function Home() {
+export const revalidate = 10;
 
-    const duties: IDuties[] = [
-        {
-            categoryType: 'Daily let-code',
-            dateProgression: [
-                {
-                    date: "26.12.2023",
-                    isFinish: false,
-                },
-                {
-                    date: "27.12.2023",
-                    isFinish: true,
-                },
-                {
-                    date: "28.12.2023",
-                    isFinish: true,
-                }
-            ],
-            id: '1'
-        },
-        {
-            categoryType: "Daily React/Next JS",
-            dateProgression: [
-                {
-                    date: "26.12.2023",
-                    isFinish: true,
-                },
-                {
-                    date: "27.12.2023",
-                    isFinish: false,
-                },
-                {
-                    date: "28.12.2023",
-                    isFinish: false,
-                }
-            ],
-            id: '2'
-        }
-    ]
+export default async function Home() {
+
+    const data : any = await kv.hgetall('duties')
+
     const date = new Date();
     const weekDays = ['Mon' , 'Tue' , 'Wed' , 'Thu' , 'Fri' , 'Sat' , 'Sun'];
     const todayDay = date.getDay();
@@ -50,16 +17,16 @@ export default function Home() {
         const date = new Date();
         date.setDate(date.getDate() - index );
         return date.toISOString().slice(0 , 10)
-    })
-    // console.log(last7days.reverse())
+    }).reverse()
+
 
     return (
         <main className={'container relative flex flex-col gap-8 px-4 text-center pt-16 text-3xl'}>
-            {!duties || duties.length === 0 ?
+            { !data && !data?.duties || data?.duties.length === 0 ?
                 <h1 className={'text-white'}>
                     You have no registered duty
                 </h1> : <div>
-                    {duties.map((duty) =>
+                    {data.duties.map((duty : any) =>
                         <div key={duty.id} className={'flex flex-col gap-2'}>
                             <div className={'flex justify-between items-center'}>
                                 <span className={'text-xl font-light text-white font-sans'}>
