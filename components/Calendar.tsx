@@ -63,6 +63,7 @@ export default function Calendar({
         })} of ${selectedDate.getFullYear()}`;
     }
     function getCurrentDay(day: Date) {
+        if (!day) return
         return `${year.toString()}-${(month + 1).toString().padStart(2, "0")}-${day
             .getDate()
             .toString()
