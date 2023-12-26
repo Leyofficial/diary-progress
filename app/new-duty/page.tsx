@@ -6,6 +6,10 @@ export default function NewDuty() {
     async function newDuty(formData: FormData) {
         "use server";
         const duty = formData.get("duty");
+        if (!duty) {
+            redirect('/')
+            return
+        }
         await kv.hset("duties", { [duty as string]: {} });
         revalidatePath("/");
         redirect("/");
