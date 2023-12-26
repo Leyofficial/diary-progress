@@ -5,6 +5,8 @@ import {DayState} from "@/components/DayState";
 
 type DutySchedule = { [duty: string]: Record<string, boolean> } | null;
 
+export const revalidate = 10;
+
 export default async function Home() {
     const duties: DutySchedule = (await kv.hgetall(
         "duties"
