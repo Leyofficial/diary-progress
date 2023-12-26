@@ -1,5 +1,5 @@
 'use client'
-import {TbPoint, TbPointFilled} from "react-icons/tb";
+import {TbPoint} from "react-icons/tb";
 import {RxCross2} from "react-icons/rx";
 import {MdOutlineDone} from "react-icons/md";
 
