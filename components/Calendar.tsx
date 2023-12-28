@@ -25,7 +25,7 @@ export default function Calendar({
                                      duty,
                                      dutyTime,
                                  }: {
-    duty: string;
+    duty: string | null;
     dutyTime: Record<string, boolean> | null;
 }) {
     const [month, setMonth] = useState(currentMonth);
@@ -72,6 +72,7 @@ export default function Calendar({
 
     return (
         <section className="w-full my-2 rounded-md bg-neutral-800">
+            <h2>Calendar</h2>
             <div className="flex justify-between mx-2 my-4 font-sans text-neutral-400">
                 <button onClick={goToPreviousMonth}>←</button>
                 <span>{getFullDate()}</span>

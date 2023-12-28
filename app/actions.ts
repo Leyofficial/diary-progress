@@ -4,7 +4,7 @@ import { kv } from "@vercel/kv";
 import { revalidatePath } from "next/cache";
 
 type ToggleDutyParams = {
-    duty: string;
+    duty: string | any;
     dutyTime: Record<string, boolean> | null;
     date: string | null;
     done: boolean;

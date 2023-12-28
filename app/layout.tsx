@@ -20,7 +20,7 @@ export default function RootLayout({
     return (
         <html lang="en">
         <body className={`${montserrat.variable} ${inter.variable} flex flex-col items-center mt-10 bg-neutral-900` }>
-        <Link href="/">
+        <Link id={'test-logo'} href="/">
             <Image src='/images/logo.png' width={200} height={200} alt='My Diary Logo'/>
         </Link>
         {children}</body>

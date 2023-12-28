@@ -6,7 +6,6 @@ export default function DeleteButton({ duty }: { duty: string }) {
     return (
         <button onClick={() => deleteDuty(duty)}>
             <MdDelete color={'darkred'} />
-
         </button>
     );
 }

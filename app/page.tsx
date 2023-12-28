@@ -31,6 +31,7 @@ export default async function Home() {
     // console.log(sortedWeekDays);
     return (
         <main className="container relative flex flex-col gap-8 px-4 pt-16">
+            <h1>Your duties</h1>
             {duties === null ||
                 (Object.keys(duties).length === 0 && (
                     <h1 className="mt-20 text-4xl font-light text-white font-sans text-center">
